@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>站内搜索_{dede:global.cfg_webname/}</title>
+<meta name="keywords" content="{dede:field name='keywords'/}" />
+<meta name="description" content="{dede:field name='description' function='html2text(@me)'/}" />
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<link href="/style/css/style.css" rel="stylesheet" />
+<link href="/style/css/article.css" rel="stylesheet" />
+</head>
+<body>
+{dede:include filename="head.htm"/}
+
+<div class="artlist">
+  <div class="container">
+    <div class="main_l">
+      <div class="location">当前位置：<a href='/'>主页</a> > 搜索 <strong>{dede:global name='keyword' function='RemoveXSS(@me)'/}</strong> 的结果</div>
+      <div class="artItemList"> {dede:list pagesize ='10' titlelen='100'}<div class="artItem s2282">
+          <div class="itemTit">
+            <h4><a href="[field:arcurl/]" title="[field:title/]">[field:title/]</a></h4>
+            <div class="pcInfo">
+              <p class="item_intro">[field:description function="cn_substr(@me,200)"/]</p>
+              <span class="item_date">[field:pubdate function="MyDate('Y-m-d h.m.s',@me)"/]</span> <span class="item_tag">[field:click/]</span>
+              <div class="down"><a href="[field:arcurl/]" title="[field:title/]">点击查看</a></div>
+            </div>
+          </div>
+          <div class="itemPic">
+            <div class="titPic"> <a href="[field:arcurl/]" title="[field:title/]"><img src="[field:litpic/]" alt="[field:title/]"></a> </div>
+          </div>
+        </div>{/dede:list}
+        <div class="clear"></div>
+        <div class="pages">
+          <ul>
+            {dede:pagelist listitem="index,end,pre,next,pageno" listsize="1"/}
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="side_r">
+	{dede:include filename="right.htm"/}
+    </div>
+  </div>
+</div>
+{dede:include filename="footer.htm"/}
+<script src="/style/js/jquery-1.9.1.min.js"></script> 
+<script src="/style/js/main.js"></script> 
+<script src="/style/js/jquery.superslide.2.1.1.js"></script> 
+
+</body>
+</html>

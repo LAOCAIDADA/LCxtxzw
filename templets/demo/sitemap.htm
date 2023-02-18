@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>{dede:field.title/}_{dede:global.cfg_webname/}</title>
+<meta name="keywords" content="{dede:field name='keywords'/}" />
+<meta name="description" content="{dede:field name='description' function='html2text(@me)'/}" />
+<link href="/style/css/style.css" rel="stylesheet" />
+<link href="/style/css/map.css" rel="stylesheet" />
+</head>
+<body>
+{dede:include filename="head.htm"/}
+
+<div id="bd">
+  <div class="wp">
+    <div class="cur m15"> 您的位置： {dede:field name='position'/}</div>
+    <div class="bor well box-software fix">
+      <h3 class="tita tit1"> <strong class="b">{dede:field name='typename'/}</strong> </h3>
+      {dede:channelartlist row='100' typeid='top' currentstyle='hover'}<dl class="fix">
+        <dt> <a href="{dede:field name='typeurl'/}"><span>{dede:field name='typename'/}</span></a></dt>
+        <dd>  {dede:channel type='son' noself='yes'}<a href="[field:typelink/]">[field:typename/]</a>  {/dede:channel}</dd>
+      </dl>{/dede:channelartlist} </div>
+  </div>
+</div>
+{dede:include filename="footer.htm"/}
+<script src="/style/js/jquery-1.9.1.min.js"></script> 
+<script src="/style/js/main.js"></script> 
+<script src="/style/js/jquery.superslide.2.1.1.js"></script> 
+
+</body>
+</html>

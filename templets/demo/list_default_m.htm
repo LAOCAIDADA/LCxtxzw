@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="applicable-device" content="mobile">
+<title>{dede:field.seotitle/}_{dede:global.cfg_webname/}</title>
+<meta name="keywords" content="{dede:field name='keywords'/}" />
+<meta name="description" content="{dede:field name='description' function='html2text(@me)'/}" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="format-detection" content="telephone=no,email=no">
+<meta name="apple-mobile-web-app-status-bar-style" content="white">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/m/style/css/style.css" />
+<link rel="stylesheet" type="text/css" href="/m/style/css/swiper.min.css">
+<script type="text/javascript" src="/m/style/js/jquery-1.8.js"></script>
+<script type="text/javascript" src="/m/style/js/systemlist.pkg.js"></script>
+<script type="text/javascript" src="/m/style/js/menu.js"></script>
+<body>
+<section id="container" class="container"> 
+{dede:include filename="header_m.htm"/}
+ 
+  <!--头部菜单开始-->
+  <nav>
+    <div class="swiper-container moveNav swiper-container-horizontal" id="moveNav" style="onsor: -webkit-grab;">
+      <div class="swiper-wrapper"> <a class="swiper-slide swiper-slide-active swiper-slide-next " href="/m" >首页</a>  {dede:channel type='son' currentstyle="<a href='list.php?tid=~id~' class='swiper-slide on'~rel~>~typename~</a>  "}<a class="swiper-slide" href="list.php?tid=[field:id/]">[field:typename/]</a>  {/dede:channel}</div>
+      <div class="navMask left"></div>
+      <div class="navMask"></div>
+      <a class="navIndex" href="/m">首页</a></div>
+  </nav>
+  <script>moveNav('#moveNav',1); </script>
+  <menu class="list_submenu">
+    <div class="top_menu_bar">
+      <div id="top_menu" class="top_menu">
+        <div class="top_menu_list"> 当前位置：{dede:field name='position'/} </div>
+      </div>
+    </div>
+  </menu>
+  <script type="text/javascript">
+     $(".top_menu_list a").each(function(i){  
+      $this = $(this); 
+      var check = $this.attr('check');
+      if(i==0){
+          $(".top_menu").scrollLeft(0);
+      }else{ 
+          if(check==1){  
+            $(".top_menu_list a").removeClass("on"); 
+            $this.addClass("on");  
+            var jl=parseInt($this.offset().left);
+            $(".top_menu").scrollLeft(jl);
+          } 
+      }
+    }); 
+//});
+</script>
+  <content id="pageletListContent" class="feed-list-container">
+    <section class="main">
+      <div class="xtjc_list">
+        <div class="f_inews1">
+          <ul class="f_inews_lis1" id="jzgd">
+            {dede:list pagesize ='8'}<li><a class="f_inewsimg1" href="view.php?aid=[field:id/]" title="[field:title/]" ><img src="[field:litpic/]" alt="[field:title/]"></a>
+              <div class="f_inewscon1">
+                <h4><a href="view.php?aid=[field:id/]" title="[field:title/]" >[field:title/]</a></h4>
+                <p class="clears1"> 浏览 : [field:click/]次<br />
+                  时间 : [field:pubdate function="MyDate('Y-m-d',@me)"/]</p>
+                <div class="sy_ydqw"><a href="view.php?aid=[field:id/]" title="[field:title/]" class="ydqw_btn1">查看更多</a></div>
+              </div>
+            </li>{/dede:list}
+          </ul>
+        </div>
+      </div>
+      <div class="pages">
+        <ul>
+          {dede:pagelist listitem="index,end,pre,next,pageno" listsize="1"/}
+        </ul>
+      </div>
+    </section>
+  </content>
+  <div class="h13"></div>
+  {dede:include filename="footer_m.htm"/}
+</section>
+</body>
+</html>
